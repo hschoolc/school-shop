@@ -1,200 +1,1243 @@
 <!DOCTYPE html>
+
+
+
 <html lang="zh-TW">
+
+
+
 <head>
+
+
+
     <meta charset="UTF-8">
+
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
     <title>大學生集散地 | 蝦皮好物嚴選</title>
+
+
+
     <script src="https://cdn.tailwindcss.com"></script>
+
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
     <style>
+
+
+
         .no-scrollbar::-webkit-scrollbar { display: none; }
+
+
+
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+
+
     </style>
+
+
+
 </head>
+
+
+
 <body class="bg-[#f9f9f9] text-[#101010] min-h-screen font-sans">
 
+
+
+
+
+
+
     <header class="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50 px-4 py-3">
+
+
+
         <div class="max-w-4xl mx-auto flex justify-between items-center">
+
+
+
             <div class="flex items-center gap-3">
+
+
+
                 <div class="w-9 h-9 rounded-full bg-slate-200 overflow-hidden border border-slate-200 shadow-sm">
+
+
+
                     <img src="avatar.jpg" alt="h.school_c" class="w-full h-full object-cover">
+
+
+
                 </div>
+
+
+
                 <div>
+
+
+
                     <h1 class="text-base font-bold tracking-tight">大學生集散地 <span class="text-xs font-normal text-slate-500">h.school_c</span></h1>
+
+
+
                     <p class="text-[11px] text-slate-400">為學生謀福利！上課/宿舍/穿搭好物推薦</p>
+
+
+
                 </div>
+
+
+
             </div>
+
+
+
             <div class="flex gap-4 text-slate-700 text-lg items-center">
-                <a href="https://www.threads.net/@h.school_c" target="_blank" class="hover:text-black transition-colors">
+
+
+
+                <a href="https://www.threads.net/@h.school_c" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors">
+
+
+
                     <i class="fa-brands fa-threads"></i>
+
+
+
                 </a>
+
+
+
                 <i class="fa-solid fa-bars cursor-pointer hover:text-black"></i>
+
+
+
             </div>
+
+
+
         </div>
+
+
+
     </header>
 
+
+
+
+
+
+
     <section class="max-w-4xl mx-auto px-4 pt-6">
+
+
+
         <div class="grid grid-cols-2 gap-3">
-            <a href="https://www.threads.net/@h.school_c" target="_blank" class="bg-black hover:bg-slate-800 text-white text-center py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
-                <i class="fa-brands fa-threads text-sm"></i> 追蹤我的 Threads 獲取最新優惠
+
+
+
+            <a href="https://www.threads.net/@h.school_c" target="_blank" rel="noopener noreferrer" class="bg-black hover:bg-slate-800 text-white text-center py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
+
+
+
+                <i class="fa-brands fa-threads text-sm"></i> 追蹤我的 Threads 獲得共鳴
+
+
+
             </a>
-            <a href="https://line.me" target="_blank" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-center py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
-                <i class="fa-solid fa-comments text-green-500 text-sm"></i> 加入 LINE 好物揪團社群
+
+
+
+            <a href="https://line.me" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-center py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
+
+
+
+                <i class="fa-solid fa-comments text-green-500 text-sm"></i> 還沒想好如何規劃 此按鈕按不了 
+
+
+
             </a>
+
+
+
         </div>
+
+
+
     </section>
+
+
+
+
+
+
 
     <section class="max-w-4xl mx-auto px-4 pt-6 pb-2">
+
+
+
         <div class="bg-white rounded-2xl border border-slate-200 p-2 shadow-sm flex items-center">
+
+
+
             <i class="fa-solid fa-magnifying-glass text-slate-400 ml-3 mr-2 text-sm"></i>
+
+
+
             <input id="searchInput" type="text" placeholder="搜尋穿搭、宿舍神物、3C 商品..." class="w-full bg-transparent text-slate-800 focus:outline-none text-sm py-1.5">
+
+
+
             <button onclick="searchProducts()" class="bg-black hover:bg-slate-800 text-white rounded-xl px-5 py-1.5 text-xs font-medium transition-colors whitespace-nowrap">搜尋好物</button>
+
+
+
         </div>
+
+
+
     </section>
+
+
+
+
+
+
+
+    <section class="max-w-4xl mx-auto px-4 py-2">
+
+
+
+        <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 rounded-2xl p-0.5 shadow-sm">
+
+
+
+            <div class="bg-white rounded-[14px] p-4">
+
+
+
+                <div class="flex justify-between items-center cursor-pointer" onclick="toggleCalculator()">
+
+
+
+                    <div class="flex items-center gap-2">
+
+
+
+                        <span class="text-base">🔥</span>
+
+
+
+                        <h3 class="font-bold text-sm text-slate-900">蝦皮免運/優惠券「最優湊單計算器」</h3>
+
+
+
+                    </div>
+
+
+
+                    <span id="calcToggleIcon" class="text-xs text-slate-400 font-bold">點擊展開 <i class="fa-solid fa-chevron-down ml-1"></i></span>
+
+
+
+                </div>
+
+
+
+               
+
+
+
+                <div id="calculatorBody" class="hidden mt-4 pt-4 border-t border-slate-100 transition-all">
+
+
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+
+
+                        <div class="space-y-3">
+
+
+
+                            <div>
+
+
+
+                                <label class="block text-xs font-bold text-slate-500 mb-1">1. 選擇你想湊的免運門檻</label>
+
+
+
+                                <select id="shippingThreshold" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-black">
+
+
+
+                                    <option value="99">$99 免運 (OK/店到店)</option>
+
+
+
+                                    <option value="149">$149 免運</option>
+
+
+
+                                    <option value="199">$199 免運 (萊爾富)</option>
+
+
+
+                                    <option value="299" selected>$299 免運 (全家/7-11)</option>
+
+
+
+                                </select>
+
+
+
+                            </div>
+
+
+
+                            <div>
+
+
+
+                                <label class="block text-xs font-bold text-slate-500 mb-1">2. 輸入目前購物車商品總金額</label>
+
+
+
+                                <div class="relative flex items-center">
+
+
+
+                                    <span class="absolute left-3 text-xs text-slate-400 font-bold">$</span>
+
+
+
+                                    <input id="currentCartAmount" type="number" placeholder="例如：245" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-7 pr-3 py-2 text-xs focus:outline-none focus:border-black">
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+                            <button onclick="calculateBestCombo()" class="w-full bg-black hover:bg-slate-800 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-all shadow-sm">
+
+
+
+                                <i class="fa-solid fa-calculator mr-1"></i> 開始計算最優湊單組合
+
+
+
+                            </button>
+
+
+
+                        </div>
+
+
+
+                       
+
+
+
+                        <div id="calcResult" class="bg-slate-50 rounded-xl p-3 border border-slate-100 flex flex-col justify-center items-center text-center min-h-[150px]">
+
+
+
+                            <i class="fa-solid fa-wand-magic-sparkles text-slate-300 text-2xl mb-2"></i>
+
+
+
+                            <p class="text-xs text-slate-400">輸入金額並點擊計算，系統將自動從好物庫為您媒合分潤湊單神物！</p>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+
 
     <nav class="max-w-4xl mx-auto px-4 py-3 overflow-x-auto flex gap-2 no-scrollbar">
+
+
+
         <button onclick="filterCategory('全部')" class="cat-btn bg-black text-white px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors border border-black shadow-sm">全部好物</button>
+
+
+
         <button onclick="filterCategory('限時特賣')" class="cat-btn bg-white hover:bg-slate-50 text-red-500 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap border border-red-200 transition-colors shadow-sm">🔥 限時特賣</button>
+
+
+
         <button onclick="filterCategory('女生穿搭')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">女生穿搭</button>
+
+
+
         <button onclick="filterCategory('男生穿搭')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">男生穿搭</button>
+
+
+
         <button onclick="filterCategory('上課必備')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">上課必備</button>
+
+
+
         <button onclick="filterCategory('宿舍神物')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">宿舍神物</button>
+
+
+
         <button onclick="filterCategory('高CP值3C')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">高CP值3C</button>
+
+
+
     </nav>
 
+
+
+
+
+
+
     <section id="storeSection" class="max-w-4xl mx-auto px-4 pt-2 pb-4">
+
+
+
         <h2 id="storeTitle" class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-3"><i class="fa-solid fa-store mr-1"></i> 精選推薦商家</h2>
+
+
+
         <div id="storeRow" class="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+
+
+
             <div class="text-slate-400 text-xs py-2">商家加載中...</div>
+
+
+
         </div>
+
+
+
     </section>
 
+
+
+
+
+
+
     <main class="max-w-4xl mx-auto px-4 pb-24 pt-2">
+
+
+
         <h2 class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-3"><i class="fa-solid fa-bag-shopping mr-1"></i> 精選推薦商品</h2>
+
+
+
         <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+
+
+
     </main>
 
+
+
+
+
+
+
     <footer class="text-center py-8 text-[11px] text-slate-400 border-t border-slate-100 bg-white mt-12">
+
+
+
         <p>© 2026 大學生集散地 h.school_c · 保留所有權利</p>
+
+
+
     </footer>
 
+
+
+
+
+
+
     <script>
+
+
+
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx9hXysLoFlntg-hQaIIbkNQk6GMCXszTV7If0U1xxJk2pkJ0EejudCP_emAKDa8r7gcA/exec";
+
+
+
         let products = [];
+
+
+
         let stores = [];
+
+
+
         let currentCategory = '全部';
 
-        // 渲染商家列表（根據當前分類篩選）
-        function displayStores(filterCat) {
-            const storeRow = document.getElementById('storeRow');
-            const storeSection = document.getElementById('storeSection');
-            const storeTitle = document.getElementById('storeTitle');
-            
-            storeRow.innerHTML = '';
-            
-            // 篩選對應分類的商家
-            const filteredStores = filterCat === '全部' ? stores : stores.filter(s => s.category === filterCat);
-            
-            if (filteredStores.length === 0) {
-                // 如果這個分類下沒有設定推薦商家，就直接把商家區塊隱藏，不留難看的空白
-                storeSection.style.display = 'none';
-                return;
+
+
+
+
+
+
+        // 切換計算器顯示/隱藏
+
+
+
+        function toggleCalculator() {
+
+
+
+            const body = document.getElementById('calculatorBody');
+
+
+
+            const icon = document.getElementById('calcToggleIcon');
+
+
+
+            if(body.classList.contains('hidden')) {
+
+
+
+                body.classList.remove('hidden');
+
+
+
+                icon.innerHTML = `點擊收合 <i class="fa-solid fa-chevron-up ml-1"></i>`;
+
+
+
+            } else {
+
+
+
+                body.classList.add('hidden');
+
+
+
+                icon.innerHTML = `點擊展開 <i class="fa-solid fa-chevron-down ml-1"></i>`;
+
+
+
             }
-            
-            storeSection.style.display = 'block';
-            storeTitle.innerHTML = `<i class="fa-solid fa-store mr-1"></i> ${filterCat === '全部' ? '精選推薦商家' : '推薦『' + filterCat + '』優質商家'}`;
-            
-            filteredStores.forEach(store => {
-                const logo = store.image || "https://images.unsplash.com/photo-1472851294608-062f824d296e?q=80&w=150";
-                const desc = store.description || "點擊逛逛優質好店";
-                storeRow.innerHTML += `
-                    <a href="${store.storeUrl}" target="_blank" class="flex items-center gap-3 bg-white border border-slate-100 rounded-xl p-3 shadow-sm min-w-[220px] max-w-[240px] flex-shrink-0 hover:shadow-md transition-all">
-                        <img src="${logo}" alt="${store.name}" class="w-10 h-10 rounded-full object-cover border border-slate-100">
-                        <div class="overflow-hidden">
-                            <h4 class="font-bold text-xs text-slate-900 truncate">${store.name}</h4>
-                            <p class="text-[10px] text-slate-400 truncate mt-0.5">${desc}</p>
-                        </div>
-                    </a>
-                `;
-            });
+
+
+
         }
+
+
+
+
+
+
+
+        // 核心邏輯：免運最優組合計算
+
+
+
+        function calculateBestCombo() {
+
+
+
+            const threshold = parseFloat(document.getElementById('shippingThreshold').value) || 0;
+
+
+
+            const current = parseFloat(document.getElementById('currentCartAmount').value) || 0;
+
+
+
+            const resultDiv = document.getElementById('calcResult');
+
+
+
+
+
+
+
+            if (current <= 0) {
+
+
+
+                resultDiv.innerHTML = `<p class="text-xs text-red-500 font-bold">請輸入正確的購物車金額唷！</p>`;
+
+
+
+                return;
+
+
+
+            }
+
+
+
+
+
+
+
+            if (current >= threshold) {
+
+
+
+                resultDiv.innerHTML = `
+
+
+
+                    <div class="text-slate-800">
+
+
+
+                        <p class="text-sm font-black text-green-600 mb-1">🎉 恭喜！您已達免運門檻！</p>
+
+
+
+                        <p class="text-[11px] text-slate-500">目前金額 $${current} 已超過免運門檻 $${threshold}，免運券直接給它開下去！</p>
+
+
+
+                    </div>
+
+
+
+                `;
+
+
+
+                return;
+
+
+
+            }
+
+
+
+
+
+
+
+            const deficit = threshold - current; // 運費缺口
+
+
+
+
+
+
+
+            // 從全部商品撈出在試算表中標記 isAddOn 為 true 的湊單品
+
+
+
+            // 注意：GAS 傳過來的 true 有可能是布林值 true，也有可能是字串 "TRUE"
+
+
+
+            const addOnPool = products.filter(p => p.isAddOn === true || String(p.isAddOn).toUpperCase() === 'TRUE');
+
+
+
+
+
+
+
+            if (addOnPool.length === 0) {
+
+
+
+                resultDiv.innerHTML = `
+
+
+
+                    <div class="text-left w-full">
+
+
+
+                        <p class="text-xs text-slate-700 font-bold mb-1">還差 <span class="text-red-500 font-black text-sm">$${deficit}</span> 元免運！</p>
+
+
+
+                        <p class="text-[10px] text-slate-400">目前後台尚未標記湊單品（isAddOn 欄位），快去點擊下方商品區尋找好物湊單吧！</p>
+
+
+
+                    </div>
+
+
+
+                `;
+
+
+
+                return;
+
+
+
+            }
+
+
+
+
+
+
+
+            // 智慧算法：依照價格與缺口的接近程度排序，找出最適合的商品（優先推薦價格大於等於缺口、且最接近的）
+
+
+
+            addOnPool.forEach(p => {
+
+
+
+                // 將價格字串轉為數字（去掉 $ 等特殊符號）
+
+
+
+                const priceNum = parseFloat(String(p.price).replace(/[^0-9.]/g, '')) || 0;
+
+
+
+                p._tempPrice = priceNum;
+
+
+
+                // 權重計算：如果價格剛好可以補滿缺口，分數越高
+
+
+
+                p._score = priceNum >= deficit ? (priceNum - deficit) : (deficit - priceNum + 1000);
+
+
+
+            });
+
+
+
+
+
+
+
+            addOnPool.sort((a, b) => a._score - b._score);
+
+
+
+            const bestMatch = addOnPool[0]; // 最佳媒合商品
+
+
+
+            const matchPrice = bestMatch._tempPrice;
+
+
+
+
+
+
+
+            resultDiv.innerHTML = `
+
+
+
+                <div class="text-left w-full space-y-2">
+
+
+
+                    <p class="text-xs text-slate-700 font-bold">離免運還差 <span class="text-red-500 font-black text-sm">$${deficit}</span> 元！</p>
+
+
+
+                    <div class="bg-white border border-slate-200 rounded-xl p-2 flex items-center gap-2 shadow-sm">
+
+
+
+                        <img src="${bestMatch.image}" class="w-10 h-10 rounded-lg object-cover flex-shrink-0">
+
+
+
+                        <div class="overflow-hidden flex-1">
+
+
+
+                            <h4 class="text-[11px] font-bold text-slate-800 truncate">${bestMatch.name}</h4>
+
+
+
+                            <p class="text-xs font-black text-orange-500 mt-0.5">${bestMatch.price}</p>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                    <p class="text-[10px] text-slate-400">💡 加上這款商品預估總計 $${current + matchPrice} 元，完美解鎖免運！</p>
+
+
+
+                    <a href="${bestMatch.affiliateUrl}" target="_blank" rel="noopener noreferrer" class="w-full bg-orange-500 hover:bg-orange-600 text-white text-center font-bold text-[11px] py-2 px-3 rounded-lg flex items-center justify-center gap-1 transition-colors shadow-sm">
+
+
+
+                        立即加購湊免運 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+
+
+
+                    </a>
+
+
+
+                </div>
+
+
+
+            `;
+
+
+
+        }
+
+
+
+
+
+
+
+        // 渲染商家列表（根據當前分類篩選）
+
+
+
+        function displayStores(filterCat) {
+
+
+
+            const storeRow = document.getElementById('storeRow');
+
+
+
+            const storeSection = document.getElementById('storeSection');
+
+
+
+            const storeTitle = document.getElementById('storeTitle');
+
+
+
+           
+
+
+
+            storeRow.innerHTML = '';
+
+
+
+           
+
+
+
+            const filteredStores = filterCat === '全部' ? stores : stores.filter(s => s.category === filterCat);
+
+
+
+           
+
+
+
+            if (filteredStores.length === 0) {
+
+
+
+                storeSection.style.display = 'none';
+
+
+
+                return;
+
+
+
+            }
+
+
+
+           
+
+
+
+            storeSection.style.display = 'block';
+
+
+
+            storeTitle.innerHTML = `<i class="fa-solid fa-store mr-1"></i> ${filterCat === '全部' ? '精選推薦商家' : '推薦『' + filterCat + '』優質商家'}`;
+
+
+
+           
+
+
+
+            filteredStores.forEach(store => {
+
+
+
+                const logo = store.image || "https://images.unsplash.com/photo-1472851294608-062f824d296e?q=80&w=150";
+
+
+
+                const desc = store.description || "點擊逛逛優質好店";
+
+
+
+                storeRow.innerHTML += `
+
+
+
+                    <a href="${store.storeUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 bg-white border border-slate-100 rounded-xl p-3 shadow-sm min-w-[220px] max-w-[240px] flex-shrink-0 hover:shadow-md transition-all">
+
+
+
+                        <img src="${logo}" alt="${store.name}" class="w-10 h-10 rounded-full object-cover border border-slate-100">
+
+
+
+                        <div class="overflow-hidden">
+
+
+
+                            <h4 class="font-bold text-xs text-slate-900 truncate">${store.name}</h4>
+
+
+
+                            <p class="text-[10px] text-slate-400 truncate mt-0.5">${desc}</p>
+
+
+
+                        </div>
+
+
+
+                    </a>
+
+
+
+                `;
+
+
+
+            });
+
+
+
+        }
+
+
+
+
+
+
 
         // 渲染商品列表
+
+
+
         function displayProducts(filteredProducts) {
+
             const grid = document.getElementById('productGrid');
+
             grid.innerHTML = '';
+
+           
+
             if(filteredProducts.length === 0) {
+
                 grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 text-xs">該分類目前尚無商品 🚀</div>`;
+
                 return;
+
             }
+
+
+
             filteredProducts.forEach(item => {
+
                 const isSale = item.category === '限時特賣';
+
                 const tagClass = isSale ? 'bg-red-500 text-white' : 'bg-black/70 text-white';
+
+               
+
+                // 從 stats 物件抓取該商品的點擊次數，沒紀錄則顯示 0
+
+                const clickCount = stats[item.name] || 0;
+
+               
+
                 grid.innerHTML += `
+
                     <div class="bg-white rounded-xl border border-slate-100 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+
                         <div>
+
                             <div class="relative aspect-square overflow-hidden bg-slate-50">
+
                                 <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+
                                 <span class="absolute top-2 left-2 backdrop-blur-sm text-[9px] font-bold px-2 py-0.5 rounded-md ${tagClass}">${item.category}</span>
+
                             </div>
+
                             <div class="p-3">
+
                                 <h3 class="font-bold text-slate-900 text-xs md:text-sm line-clamp-2 mb-2 leading-snug h-8 md:h-10">${item.name}</h3>
+
                                 <div class="flex items-center justify-between text-[11px] text-slate-500 mb-2">
+
                                     <span class="text-amber-500 font-bold flex items-center gap-0.5"><i class="fa-solid fa-star text-[10px]"></i> ${item.rating || '4.9 ★'}</span>
-                                    <span class="text-slate-400">${item.sales || '已售出'}</span>
+
+                                    <span class="text-slate-400 font-medium"><i class="fa-solid fa-fire text-orange-400 mr-0.5"></i> ${clickCount} 人點擊</span>
+
                                 </div>
+
                                 <div class="text-sm font-black text-black">${item.price}</div>
+
                             </div>
+
                         </div>
+
                         <div class="p-3 pt-0">
-                            <a href="${item.affiliateUrl}" target="_blank" class="w-full bg-black hover:bg-slate-800 text-white text-center font-bold text-[11px] py-2 px-3 rounded-lg flex items-center justify-center gap-1 transition-colors">
+
+                            <button onclick="trackAndOpen('${item.name.replace(/'/g, "\\'")}', '${item.affiliateUrl}')"
+
+                                class="w-full bg-black hover:bg-slate-800 text-white text-center font-bold text-[11px] py-2 px-3 rounded-lg flex items-center justify-center gap-1 transition-colors">
+
                                 查看賣場細節 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                            </a>
+
+                            </button>
+
                         </div>
+
                     </div>
+
                 `;
+
             });
+
         }
 
-        // 分類點擊連動核心
+
+
+
+
+
+
+        // 分類點擊連動
+
+
+
         function filterCategory(category) {
+
+
+
             currentCategory = category;
+
+
+
             const buttons = document.querySelectorAll('.cat-btn');
+
+
+
             buttons.forEach(btn => {
+
+
+
                 if(btn.innerText.includes(category)) {
+
+
+
                     btn.className = category === '限時特賣' ? "cat-btn bg-red-500 text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors shadow-sm" : "cat-btn bg-black text-white px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors border border-black shadow-sm";
+
+
+
                 } else {
+
+
+
                     btn.className = btn.innerText.includes('限時特賣') ? "cat-btn bg-white hover:bg-slate-50 text-red-500 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap border border-red-200 transition-colors shadow-sm" : "cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm";
+
+
+
                 }
+
+
+
             });
-            
-            // 同時連動過濾「推薦商家」和「精選商品」！
+
+
+
+           
+
+
+
+            let filtered = (category === '全部') ? [...products] : products.filter(p => p.category === category);
+
+            // 如果是「全部」，就按點擊次數從大到小排序
+            if (category === '全部') {
+                filtered.sort((a, b) => (stats[b.name] || 0) - (stats[a.name] || 0));
+            }
+
             displayStores(category);
-            displayProducts(category === '全部' ? products : products.filter(p => p.category === category));
+            displayProducts(filtered);
+
+
+
         }
+
+
+
+
+
+
 
         function searchProducts() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
-            displayProducts(products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query)));
+            let filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+
+            // 搜尋結果也按熱門度排序
+            filtered.sort((a, b) => (stats[b.name] || 0) - (stats[a.name] || 0));
+
+            displayProducts(filtered);
         }
+
+
+
+        // 在 script 區塊中加入
+
+            function trackAndOpen(name, url) {
+
+                fetch(GOOGLE_SCRIPT_URL, {
+
+                    method: 'POST',
+
+                    body: JSON.stringify({ type: 'productClick', productName: name })
+
+                });
+
+                window.open(url, '_blank');
+
+            }
+
+            let stats = {};
+
+
 
         async function loadData() {
+
+            // 1. 觸發瀏覽統計
+
+            fetch(GOOGLE_SCRIPT_URL, {
+
+                method: 'POST',
+
+                body: JSON.stringify({ type: 'pageView' })
+
+            }).catch(e => console.log("PageView track error", e));
+
+
+
             try {
+
                 const response = await fetch(GOOGLE_SCRIPT_URL);
+
                 const resJson = await response.json();
+
                 products = resJson.products || [];
+
                 stores = resJson.stores || [];
-                
-                // 預設載入全部
-                displayStores('全部');
-                displayProducts(products);
+
+                stats = resJson.stats || {}; // 關鍵：將後端統計資料存入變數
+
+               
+
+                // 將這兩行
+                // displayStores('全部');
+                // displayProducts(products);
+
+                // 改為呼叫 filterCategory，這樣它會自動執行排序
+                filterCategory('全部');
+
             } catch (error) {
+
                 console.error("資料讀取失敗:", error);
+
             }
+
+
+
         }
 
+
+
+
+
+
+
         document.getElementById('searchInput').addEventListener('keypress', e => { if (e.key === 'Enter') searchProducts(); });
+
+
+
         loadData();
+
+
+
     </script>
+
+
+
 </body>
-</html>
+
+
+
+</html> 
+
