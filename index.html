@@ -1,1243 +1,749 @@
 <!DOCTYPE html>
-
-
-
 <html lang="zh-TW">
-
-
-
 <head>
-
-
-
     <meta charset="UTF-8">
-
-
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
     <title>大學生集散地 | 蝦皮好物嚴選</title>
-
-
-
     <script src="https://cdn.tailwindcss.com"></script>
-
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
-
     <style>
-
-
-
         .no-scrollbar::-webkit-scrollbar { display: none; }
-
-
-
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-
-
     </style>
-
-
-
 </head>
-
-
-
 <body class="bg-[#f9f9f9] text-[#101010] min-h-screen font-sans">
 
-
-
-
-
-
-
     <header class="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50 px-4 py-3">
-
-
-
         <div class="max-w-4xl mx-auto flex justify-between items-center">
-
-
-
             <div class="flex items-center gap-3">
-
-
-
                 <div class="w-9 h-9 rounded-full bg-slate-200 overflow-hidden border border-slate-200 shadow-sm">
-
-
-
                     <img src="avatar.jpg" alt="h.school_c" class="w-full h-full object-cover">
-
-
-
                 </div>
-
-
-
                 <div>
-
-
-
                     <h1 class="text-base font-bold tracking-tight">大學生集散地 <span class="text-xs font-normal text-slate-500">h.school_c</span></h1>
-
-
-
                     <p class="text-[11px] text-slate-400">為學生謀福利！上課/宿舍/穿搭好物推薦</p>
-
-
-
                 </div>
-
-
-
             </div>
-
-
-
             <div class="flex gap-4 text-slate-700 text-lg items-center">
-
-
-
                 <a href="https://www.threads.net/@h.school_c" target="_blank" rel="noopener noreferrer" class="hover:text-black transition-colors">
-
-
-
                     <i class="fa-brands fa-threads"></i>
-
-
-
                 </a>
-
-
-
-                <i class="fa-solid fa-bars cursor-pointer hover:text-black"></i>
-
-
-
+                <button onclick="toggleChecklistDrawer()" class="p-2 rounded-full hover:bg-slate-100 transition-colors" title="租屋必備清單">
+                    <i class="fa-solid fa-bars cursor-pointer hover:text-black"></i>
+                </button>
             </div>
-
-
-
         </div>
-
-
-
     </header>
 
-
-
-
-
-
-
     <section class="max-w-4xl mx-auto px-4 pt-6">
-
-
-
         <div class="grid grid-cols-2 gap-3">
-
-
-
             <a href="https://www.threads.net/@h.school_c" target="_blank" rel="noopener noreferrer" class="bg-black hover:bg-slate-800 text-white text-center py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
-
-
-
                 <i class="fa-brands fa-threads text-sm"></i> 追蹤我的 Threads 獲得共鳴
-
-
-
             </a>
-
-
-
             <a href="https://line.me" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-center py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
-
-
-
                 <i class="fa-solid fa-comments text-green-500 text-sm"></i> 還沒想好如何規劃 此按鈕按不了 
-
-
-
             </a>
-
-
-
         </div>
-
-
-
     </section>
-
-
-
-
-
-
 
     <section class="max-w-4xl mx-auto px-4 pt-6 pb-2">
-
-
-
         <div class="bg-white rounded-2xl border border-slate-200 p-2 shadow-sm flex items-center">
-
-
-
             <i class="fa-solid fa-magnifying-glass text-slate-400 ml-3 mr-2 text-sm"></i>
-
-
-
             <input id="searchInput" type="text" placeholder="搜尋穿搭、宿舍神物、3C 商品..." class="w-full bg-transparent text-slate-800 focus:outline-none text-sm py-1.5">
-
-
-
             <button onclick="searchProducts()" class="bg-black hover:bg-slate-800 text-white rounded-xl px-5 py-1.5 text-xs font-medium transition-colors whitespace-nowrap">搜尋好物</button>
-
-
-
         </div>
-
-
-
     </section>
 
-
-
-
-
-
-
+    <!-- 蝦皮免運計算器 -->
     <section class="max-w-4xl mx-auto px-4 py-2">
-
-
-
         <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 rounded-2xl p-0.5 shadow-sm">
-
-
-
             <div class="bg-white rounded-[14px] p-4">
-
-
-
                 <div class="flex justify-between items-center cursor-pointer" onclick="toggleCalculator()">
-
-
-
                     <div class="flex items-center gap-2">
-
-
-
                         <span class="text-base">🔥</span>
-
-
-
                         <h3 class="font-bold text-sm text-slate-900">蝦皮免運/優惠券「最優湊單計算器」</h3>
-
-
-
                     </div>
-
-
-
                     <span id="calcToggleIcon" class="text-xs text-slate-400 font-bold">點擊展開 <i class="fa-solid fa-chevron-down ml-1"></i></span>
-
-
-
                 </div>
-
-
-
-               
-
-
-
+                
                 <div id="calculatorBody" class="hidden mt-4 pt-4 border-t border-slate-100 transition-all">
-
-
-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-
-
                         <div class="space-y-3">
-
-
-
                             <div>
-
-
-
                                 <label class="block text-xs font-bold text-slate-500 mb-1">1. 選擇你想湊的免運門檻</label>
-
-
-
                                 <select id="shippingThreshold" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-black">
-
-
-
                                     <option value="99">$99 免運 (OK/店到店)</option>
-
-
-
                                     <option value="149">$149 免運</option>
-
-
-
                                     <option value="199">$199 免運 (萊爾富)</option>
-
-
-
                                     <option value="299" selected>$299 免運 (全家/7-11)</option>
-
-
-
                                 </select>
-
-
-
                             </div>
-
-
-
                             <div>
-
-
-
                                 <label class="block text-xs font-bold text-slate-500 mb-1">2. 輸入目前購物車商品總金額</label>
-
-
-
                                 <div class="relative flex items-center">
-
-
-
                                     <span class="absolute left-3 text-xs text-slate-400 font-bold">$</span>
-
-
-
                                     <input id="currentCartAmount" type="number" placeholder="例如：245" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-7 pr-3 py-2 text-xs focus:outline-none focus:border-black">
-
-
-
                                 </div>
-
-
-
                             </div>
-
-
-
                             <button onclick="calculateBestCombo()" class="w-full bg-black hover:bg-slate-800 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition-all shadow-sm">
-
-
-
                                 <i class="fa-solid fa-calculator mr-1"></i> 開始計算最優湊單組合
-
-
-
                             </button>
-
-
-
                         </div>
-
-
-
-                       
-
-
-
+                        
                         <div id="calcResult" class="bg-slate-50 rounded-xl p-3 border border-slate-100 flex flex-col justify-center items-center text-center min-h-[150px]">
-
-
-
                             <i class="fa-solid fa-wand-magic-sparkles text-slate-300 text-2xl mb-2"></i>
-
-
-
                             <p class="text-xs text-slate-400">輸入金額並點擊計算，系統將自動從好物庫為您媒合分潤湊單神物！</p>
-
-
-
                         </div>
-
-
-
                     </div>
-
-
-
                 </div>
-
-
-
             </div>
-
-
-
         </div>
-
-
-
     </section>
-
-
-
-
-
-
 
     <nav class="max-w-4xl mx-auto px-4 py-3 overflow-x-auto flex gap-2 no-scrollbar">
-
-
-
         <button onclick="filterCategory('全部')" class="cat-btn bg-black text-white px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors border border-black shadow-sm">全部好物</button>
-
-
-
         <button onclick="filterCategory('限時特賣')" class="cat-btn bg-white hover:bg-slate-50 text-red-500 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap border border-red-200 transition-colors shadow-sm">🔥 限時特賣</button>
-
-
-
         <button onclick="filterCategory('女生穿搭')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">女生穿搭</button>
-
-
-
         <button onclick="filterCategory('男生穿搭')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">男生穿搭</button>
-
-
-
         <button onclick="filterCategory('上課必備')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">上課必備</button>
-
-
-
         <button onclick="filterCategory('宿舍神物')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">宿舍神物</button>
-
-
-
         <button onclick="filterCategory('高CP值3C')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">高CP值3C</button>
-
-
-
     </nav>
 
-
-
-
-
-
-
     <section id="storeSection" class="max-w-4xl mx-auto px-4 pt-2 pb-4">
-
-
-
         <h2 id="storeTitle" class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-3"><i class="fa-solid fa-store mr-1"></i> 精選推薦商家</h2>
-
-
-
         <div id="storeRow" class="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
-
-
-
             <div class="text-slate-400 text-xs py-2">商家加載中...</div>
-
-
-
         </div>
-
-
-
     </section>
 
-
-
-
-
-
-
     <main class="max-w-4xl mx-auto px-4 pb-24 pt-2">
-
-
-
         <h2 class="text-xs font-bold text-slate-400 tracking-wider uppercase mb-3"><i class="fa-solid fa-bag-shopping mr-1"></i> 精選推薦商品</h2>
-
-
-
         <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
-
-
-
     </main>
 
-
-
-
-
-
-
     <footer class="text-center py-8 text-[11px] text-slate-400 border-t border-slate-100 bg-white mt-12">
-
-
-
         <p>© 2026 大學生集散地 h.school_c · 保留所有權利</p>
-
-
-
     </footer>
 
-
-
-
-
-
+    <div id="checklistDrawer" class="fixed inset-y-0 right-0 z-[60] w-full max-w-md pointer-events-none transform translate-x-full transition-transform duration-300 ease-out">
+        <div class="absolute inset-0 bg-black/20" onclick="closeChecklistDrawer()"></div>
+        <div class="relative ml-auto h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
+            <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200">
+                <div>
+                    <h3 class="text-sm font-black text-slate-900">租屋／宿舍清單</h3>
+                    <p class="text-[11px] text-slate-400">點擊右側可直接查看與勾選</p>
+                </div>
+                <button onclick="closeChecklistDrawer()" class="w-8 h-8 rounded-full hover:bg-slate-100 flex items-center justify-center text-slate-500">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="drawerChecklistBody" class="flex-1 overflow-y-auto p-4 space-y-4"></div>
+        </div>
+    </div>
 
     <script>
-
-
-
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx9hXysLoFlntg-hQaIIbkNQk6GMCXszTV7If0U1xxJk2pkJ0EejudCP_emAKDa8r7gcA/exec";
-
-
-
         let products = [];
-
-
-
         let stores = [];
-
-
-
         let currentCategory = '全部';
+        let stats = {};
+        let rawChecklistData = [];
 
-
-
-
-
-
+        // 靜態定義使用者提供的完整宿舍清單資料庫 (備用)
+        const defaultChecklistData = [
+    { category: "寢具", name: "床墊", note: "建議選獨立筒比較舒服" },
+    { category: "寢具", name: "床單", note: "帶兩套輪流洗" },
+    { category: "寢具", name: "枕頭", note: "帶常睡的，因為宿舍很難調整棉花" },
+    { category: "寢具", name: "枕頭套", note: "2-3 條備用" },
+    { category: "寢具", name: "厚被子", note: "冬天必備，8月時先不帶" },
+    { category: "寢具", name: "薄被子", note: "秋冬春三季常用" },
+    { category: "寢具", name: "被套", note: "2 套，方便清洗" },
+    { category: "寢具", name: "保潔墊", note: "防止床墊髒污" },
+    { category: "寢具", name: "抱枕", note: "睡得更舒服" },
+    { category: "寢具", name: "玩偶們", note: "裝飾房間，解壓神器" },
+    { category: "日常用品", name: "水壺", note: "帶大容量的" },
+    { category: "日常用品", name: "棉花棒", note: "必備清潔用品" },
+    { category: "日常用品", name: "牙線", note: "宿舍必帶" },
+    { category: "日常用品", name: "垃圾袋", note: "帶家裡的就可" },
+    { category: "日常用品", name: "垃圾桶", note: "小型的兩個足夠" },
+    { category: "日常用品", name: "濕紙巾", note: "用處很多" },
+    { category: "日常用品", name: "克潮靈", note: "除溼必備" },
+    { category: "日常用品", name: "吊掛式除溼", note: "衣櫃必放一個" },
+    { category: "日常用品", name: "衛生紙", note: "一堆一堆備著" },
+    { category: "日常用品", name: "電風扇", note: "宿舍夏天幾乎無法沒有" },
+    { category: "日常用品", name: "雨傘", note: "帶兩把以備不時之需" },
+    { category: "日常用品", name: "指甲剪" },
+    { category: "日常用品", name: "指甲刀" },
+    { category: "日常用品", name: "梳子", note: "帶順手的" },
+    { category: "日常用品", name: "小夜燈", note: "方便夜間活動" },
+    { category: "日常用品", name: "轉接頭", note: "充電口多的話很方便" },
+    { category: "日常用品", name: "延長線", note: "帶 3 孔的，宿舍插座很缺" },
+    { category: "日常用品", name: "鏡子", note: "可帶小鏡子" },
+    { category: "日常用品", name: "耳塞", note: "宿舍環境複雜必備" },
+    { category: "日常用品", name: "眼罩", note: "助眠好物" },
+    { category: "日常用品", name: "臉盆", note: "洗襪子、小物件用" },
+    { category: "日常用品", name: "護唇膏", note: "冬天必備，容易乾裂" },
+    { category: "日常用品", name: "面紙", note: "小包放包裡" },
+    { category: "日常用品", name: "小白板", note: "貼在門上留言用" },
+    { category: "清潔用具", name: "抹布", note: "帶 2-3 條" },
+    { category: "清潔用具", name: "小掃把/滾筒", note: "床下很容易積灰" },
+    { category: "清潔用具", name: "掃把/拖把", note: "宿舍通常有，不用帶" },
+    { category: "清潔用具", name: "馬桶刷", note: "自己宿舍有浴室才需要" },
+    { category: "清潔用具", name: "玻璃清潔劑", note: "擦窗戶、鏡子用" },
+    { category: "清潔用具", name: "地板清潔液", note: "掃地後必備" },
+    { category: "廚房用品", name: "快煮鍋", note: "煮火鍋、泡麵、飲水" },
+    { category: "廚房用品", name: "洗碗精", note: "小罐裝就夠" },
+    { category: "廚房用品", name: "菜瓜布", note: "刷鍋子用" },
+    { category: "廚房用品", name: "餐具", note: "帶喜歡的" },
+    { category: "廚房用品", name: "刀具", note: "簡單的就夠" },
+    { category: "廚房用品", name: "調味料、油", note: "自炊必備" },
+    { category: "廚房用品", name: "砧板", note: "小的就可以" },
+    { category: "廚房用品", name: "保鮮盒", note: "裝剩菜必備" },
+    { category: "廚房用品", name: "杯子", note: "帶 2-3 個" },
+    { category: "廚房用品", name: "碗", note: "盛飯用" },
+    { category: "盥洗用品", name: "牙膏", note: "帶大罐的" },
+    { category: "盥洗用品", name: "牙刷", note: "2-3 支備用" },
+    { category: "盥洗用品", name: "洗面乳", note: "選適合膚質的" },
+    { category: "盥洗用品", name: "洗髮精", note: "帶喜歡的牌子" },
+    { category: "盥洗用品", name: "沐浴乳", note: "帶大罐的" },
+    { category: "盥洗用品", name: "洗手乳" },
+    { category: "盥洗用品", name: "香皂", note: "或洗手液" },
+    { category: "盥洗用品", name: "香皂盒" },
+    { category: "盥洗用品", name: "吹風機", note: "必備，宿舍沒得借" },
+    { category: "盥洗用品", name: "洗澡提籃", note: "方便拿東西進浴室" },
+    { category: "盥洗用品", name: "衣服籃", note: "放乾淨衣物" },
+    { category: "盥洗用品", name: "髒衣置放袋", note: "大飲料袋其實很好用" },
+    { category: "盥洗用品", name: "毛巾", note: "帶 3-4 條" },
+    { category: "盥洗用品", name: "浴巾", note: "1-2 條" },
+    { category: "盥洗用品", name: "浴球/洗澡巾", note: "選喜歡的質感" },
+    { category: "盥洗用品", name: "舌苔刷", note: "清潔舌苔必備" },
+    { category: "盥洗用品", name: "舌苔牙膏" },
+    { category: "盥洗用品", name: "漱口杯" },
+    { category: "盥洗用品", name: "護髮乳", note: "夏天特別重要" },
+    { category: "盥洗用品", name: "洗臉巾", note: "比毛巾更衛生" },
+    { category: "盥洗用品", name: "浴帽", note: "不想每天洗頭必備" },
+    { category: "盥洗用品", name: "衛生棉", note: "女性必備" },
+    { category: "盥洗用品", name: "護墊", note: "常備幾片" },
+    { category: "盥洗用品", name: "刮鬍刀", note: "男性必備" },
+    { category: "盥洗用品", name: "痘痘貼", note: "應急用" },
+    { category: "盥洗用品", name: "潔面儀", note: "敏感肌必買" },
+    { category: "盥洗用品", name: "護髮膜", note: "護理頭髮" },
+    { category: "洗衣用品", name: "髒衣籃", note: "放在角落節省空間" },
+    { category: "洗衣用品", name: "洗衣精", note: "帶超濃縮的較輕" },
+    { category: "洗衣用品", name: "曬衣夾", note: "帶 10 個以上" },
+    { category: "洗衣用品", name: "衣架", note: "傳統衣架很能凹折" },
+    { category: "洗衣用品", name: "曬衣架", note: "可摺疊的最省空間" },
+    { category: "洗衣用品", name: "洗衣袋", note: "貼身衣物必用" },
+    { category: "洗衣用品", name: "芳香劑", note: "衣櫃放一個" },
+    { category: "洗衣用品", name: "柔軟精", note: "衣物香香必備" },
+    { category: "洗衣用品", name: "除毛球機", note: "冬衣救星" },
+    { category: "衣物", name: "內衣", note: "帶一週份的量" },
+    { category: "衣物", name: "內褲", note: "帶一週份" },
+    { category: "衣物", name: "上衣", note: "帶 7-10 件" },
+    { category: "衣物", name: "褲子", note: "帶 3-5 條" },
+    { category: "衣物", name: "裙子", note: "隨個人" },
+    { category: "衣物", name: "外套", note: "秋冬季帶厚外套" },
+    { category: "衣物", name: "皮帶", note: "1-2 條" },
+    { category: "衣物", name: "洋裝", note: "隨個人" },
+    { category: "衣物", name: "睡衣", note: "很多人穿高中短褲" },
+    { category: "衣物", name: "帽子", note: "防曬必備" },
+    { category: "衣物", name: "襪子", note: "帶 10 雙以上" },
+    { category: "衣物", name: "內搭褲", note: "穿短褲必須" },
+    { category: "衣物", name: "貼身衣", note: "舒適很重要" },
+    { category: "包包類", name: "錢包", note: "帶喜歡的" },
+    { category: "包包類", name: "書包", note: "上課包" },
+    { category: "包包類", name: "肩背包", note: "上課包+出遊包" },
+    { category: "包包類", name: "漂亮包", note: "出遊包" },
+    { category: "包包類", name: "證件套", note: "保護證件" },
+    { category: "包包類", name: "電腦包", note: "保護電腦" },
+    { category: "包包類", name: "化妝包", note: "放妝品" },
+    { category: "鞋子", name: "布鞋/運動鞋", note: "帶兩雙輪流穿" },
+    { category: "鞋子", name: "皮鞋", note: "面試時才需要" },
+    { category: "鞋子", name: "洞洞鞋/涼鞋", note: "下雨天可穿" },
+    { category: "鞋子", name: "靴子", note: "冬天穿搭" },
+    { category: "鞋子", name: "室內拖", note: "宿舍走廊必備" },
+    { category: "鞋子", name: "外穿拖", note: "方便快速出門" },
+    { category: "鞋子", name: "運動鞋", note: "上體育課用" },
+    { category: "鞋子", name: "雨鞋", note: "很下雨必備" },
+    { category: "電子用品", name: "充電線", note: "帶 2-3 條" },
+    { category: "電子用品", name: "電腦", note: "上課+報告必須" },
+    { category: "電子用品", name: "電腦充電器", note: "帶備用的" },
+    { category: "電子用品", name: "滑鼠", note: "無線的不佔空間" },
+    { category: "電子用品", name: "滑鼠墊", note: "保護桌面" },
+    { category: "電子用品", name: "平板", note: "上課記筆記用" },
+    { category: "電子用品", name: "平板充電線", note: "備用" },
+    { category: "電子用品", name: "觸控筆", note: "繪圖必備" },
+    { category: "電子用品", name: "硬碟", note: "備份重要檔案" },
+    { category: "電子用品", name: "USB", note: "帶幾支備用" },
+    { category: "電子用品", name: "行動電源", note: "大容量必買" },
+    { category: "電子用品", name: "耳機", note: "帶無線的方便" },
+    { category: "電子用品", name: "手錶", note: "可穿戴設備" },
+    { category: "電子用品", name: "小包衛生紙", note: "放包裡" },
+    { category: "電子用品", name: "轉接器", note: "多功能轉接最實用" },
+    { category: "電子用品", name: "LED 燈", note: "宿舍照明" },
+    { category: "重要物件", name: "各式證件", note: "學生證、健保卡等" },
+    { category: "重要物件", name: "大頭照", note: "申請證件用" },
+    { category: "重要物件", name: "鑰匙圈", note: "不會遺失鑰匙" },
+    { category: "文書用品", name: "筆記本", note: "帶數本備用" },
+    { category: "文書用品", name: "筆", note: "黑藍筆各一支" },
+    { category: "文書用品", name: "螢光筆", note: "重點標記" },
+    { category: "文書用品", name: "膠帶", note: "修補東西" },
+    { category: "文書用品", name: "雙面膠", note: "不傷牆面" },
+    { category: "文書用品", name: "釘書機", note: "小型就夠" },
+    { category: "文書用品", name: "美工刀", note: "裁紙用" },
+    { category: "文書用品", name: "剪刀", note: "必備" },
+    { category: "文書用品", name: "鉛筆盒" },
+    { category: "文書用品", name: "L夾", note: "整理講義" },
+    { category: "文書用品", name: "日曆", note: "行程管理" },
+    { category: "文書用品", name: "便利貼", note: "提醒自己" },
+    { category: "文書用品", name: "膠水", note: "黏貼用" },
+    { category: "藥品類", name: "口罩", note: "帶一堆" },
+    { category: "藥品類", name: "酒精", note: "消毒必備" },
+    { category: "藥品類", name: "過敏藥", note: "有症狀必帶" },
+    { category: "藥品類", name: "感冒藥", note: "應急用" },
+    { category: "藥品類", name: "喉片", note: "保護喉嚨" },
+    { category: "藥品類", name: "胃藥", note: "亂吃必備" },
+    { category: "藥品類", name: "口內膏", note: "嘴破用" },
+    { category: "藥品類", name: "維生素C", note: "增強免疫力" },
+    { category: "藥品類", name: "OK繃", note: "傷口貼" },
+    { category: "藥品類", name: "B群", note: "營養補充" },
+    { category: "藥品類", name: "葉黃素", note: "保護眼睛" },
+    { category: "藥品類", name: "蚊蟲藥", note: "止癢" },
+    { category: "藥品類", name: "白藥水", note: "消毒傷口" },
+    { category: "藥品類", name: "人工淚液", note: "眼睛乾用" },
+    { category: "眼鏡類", name: "眼鏡本人", note: "帶備用的更安心" },
+    { category: "眼鏡類", name: "眼鏡盒", note: "保護眼鏡" },
+    { category: "眼鏡類", name: "眼藥水", note: "常備" },
+    { category: "眼鏡類", name: "隱形眼鏡", note: "帶不少盒" },
+    { category: "眼鏡類", name: "隱形眼鏡盒", note: "帶備用的" },
+    { category: "眼鏡類", name: "隱眼外出盒", note: "臨時應急" },
+    { category: "眼鏡類", name: "拔隱眼的棒子" },
+    { category: "眼鏡類", name: "生理食鹽水", note: "一堆備著" },
+    { category: "眼鏡類", name: "隱形眼鏡清洗液", note: "必須" },
+    { category: "眼鏡類", name: "眼鏡布", note: "天天用" },
+    { category: "收納用品", name: "桌上收納盒", note: "筆筒、小物件" },
+    { category: "收納用品", name: "收納掛勾", note: "不傷牆面的" },
+    { category: "收納用品", name: "大袋子", note: "行李分類" },
+    { category: "收納用品", name: "行李箱", note: "放假行李" },
+    { category: "收納用品", name: "3M掛勾", note: "牆面掛物" },
+    { category: "收納用品", name: "抽屜內的收納盒", note: "分門別類" },
+    { category: "收納用品", name: "衣物收納", note: "床底收納袋" },
+    { category: "收納用品", name: "首飾收納盒", note: "放手飾" },
+    { category: "收納用品", name: "書架", note: "整理書籍" },
+    { category: "收納用品", name: "置物架", note: "多層收納" },
+    { category: "收納用品", name: "收納盒", note: "各種尺寸" },
+    { category: "髮品類", name: "髮捲", note: "燙頭髮" },
+    { category: "髮品類", name: "離子夾", note: "拉直頭髮" },
+    { category: "髮品類", name: "髮蠟", note: "造型用" },
+    { category: "髮品類", name: "髮膠", note: "固定髮型" },
+    { category: "髮品類", name: "梳子", note: "多帶幾支" },
+    { category: "變美法寶", name: "乳液", note: "每天必用" },
+    { category: "變美法寶", name: "橡皮筋", note: "綁頭髮" },
+    { category: "變美法寶", name: "化妝水", note: "保濕" },
+    { category: "變美法寶", name: "髮圈", note: "多帶幾條" },
+    { category: "變美法寶", name: "化妝棉" },
+    { category: "變美法寶", name: "髮夾", note: "各種夾子" },
+    { category: "變美法寶", name: "卸妝用品", note: "天天用" },
+    { category: "變美法寶", name: "鯊魚夾", note: "夏天必備" },
+    { category: "變美法寶", name: "各種精華", note: "護膚組合" },
+    { category: "變美法寶", name: "小黑夾", note: "髮型固定" },
+    { category: "變美法寶", name: "護唇膏", note: "隨身攜帶" },
+    { category: "變美法寶", name: "化妝用品", note: "底妝、眼妝等" },
+    { category: "變美法寶", name: "護手霜", note: "冬天乾裂必備" },
+    { category: "變美法寶", name: "香水", note: "個人香氣" },
+    { category: "變美法寶", name: "面膜", note: "週末保養" },
+    { category: "變美法寶", name: "眉筆", note: "描眉毛" },
+    { category: "變美法寶", name: "眼影", note: "妝容必備" },
+    { category: "變美法寶", name: "口紅", note: "氣色加分" }
+];
 
         // 切換計算器顯示/隱藏
-
-
-
         function toggleCalculator() {
-
-
-
             const body = document.getElementById('calculatorBody');
-
-
-
             const icon = document.getElementById('calcToggleIcon');
-
-
-
             if(body.classList.contains('hidden')) {
-
-
-
                 body.classList.remove('hidden');
-
-
-
                 icon.innerHTML = `點擊收合 <i class="fa-solid fa-chevron-up ml-1"></i>`;
-
-
-
             } else {
-
-
-
                 body.classList.add('hidden');
-
-
-
                 icon.innerHTML = `點擊展開 <i class="fa-solid fa-chevron-down ml-1"></i>`;
-
-
-
             }
-
-
-
         }
 
+        // 切換租屋清單顯示/隱藏
+        function toggleRentalChecklist() {
+            const body = document.getElementById('rentalChecklistBody');
+            const icon = document.getElementById('rentalToggleIcon');
+            if(body.classList.contains('hidden')) {
+                body.classList.remove('hidden');
+                icon.innerHTML = `點擊收合 <i class="fa-solid fa-chevron-up ml-1"></i>`;
+            } else {
+                body.classList.add('hidden');
+                icon.innerHTML = `點擊展開 <i class="fa-solid fa-chevron-down ml-1"></i>`;
+            }
+        }
 
+        // 開啟/收合右側抽屜清單
+        function toggleChecklistDrawer() {
+            const drawer = document.getElementById('checklistDrawer');
+            if (drawer.classList.contains('translate-x-0')) {
+                closeChecklistDrawer();
+            } else {
+                openChecklistDrawer();
+            }
+        }
 
+        function openChecklistDrawer() {
+            const drawer = document.getElementById('checklistDrawer');
+            drawer.classList.remove('translate-x-full', 'pointer-events-none');
+            drawer.classList.add('translate-x-0', 'pointer-events-auto');
+            document.body.classList.add('overflow-hidden');
+        }
 
+        function closeChecklistDrawer() {
+            const drawer = document.getElementById('checklistDrawer');
+            drawer.classList.remove('translate-x-0', 'pointer-events-auto');
+            drawer.classList.add('translate-x-full', 'pointer-events-none');
+            document.body.classList.remove('overflow-hidden');
+        }
 
+        function resolveChecklistUrl(item) {
+            const explicitUrl = item.url && item.url.trim() !== '' ? item.url.trim() : '';
+            if (explicitUrl) {
+                return explicitUrl;
+            }
 
+            // 根據清單項名稱關鍵字搜尋商品
+            const normalizedItemName = (item.name || '').toLowerCase().replace(/\s+/g, '');
+            
+            // 嘗試完全或部分匹配
+            const matchedProduct = products.find(product => {
+                const productName = (product.name || '').toLowerCase().replace(/\s+/g, '');
+                return productName.includes(normalizedItemName) || normalizedItemName.includes(productName);
+            });
+
+            if (matchedProduct && matchedProduct.affiliateUrl) {
+                return matchedProduct.affiliateUrl;
+            }
+
+            // 沒有找到匹配的商品，返回空
+            return '';
+        }
+
+        // 動態生成帶分類的租屋清單
+        function buildChecklistHTML(mode = 'main') {
+            const categories = {};
+            rawChecklistData.forEach(item => {
+                if (!categories[item.category]) {
+                    categories[item.category] = [];
+                }
+                categories[item.category].push(item);
+            });
+
+            let html = '';
+            Object.keys(categories).forEach((catName, catIndex) => {
+                const isDrawer = mode === 'drawer';
+                const containerClass = isDrawer ? 'space-y-1.5' : 'space-y-2';
+                const headingClass = isDrawer
+                    ? 'text-[11px] font-black text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md inline-block mb-1'
+                    : 'text-xs font-black text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md inline-block mb-1';
+                const itemClass = isDrawer
+                    ? 'flex items-start justify-between p-2 rounded-xl bg-slate-50/70 border border-slate-100 hover:bg-slate-100/50 transition-all'
+                    : 'flex items-start justify-between p-2 rounded-xl bg-slate-50/70 border border-slate-100 hover:bg-slate-100/50 transition-all';
+                const labelClass = isDrawer
+                    ? 'text-[11px] font-bold text-slate-700 block cursor-pointer select-none'
+                    : 'text-xs font-bold text-slate-700 block cursor-pointer select-none';
+                const noteClass = isDrawer
+                    ? 'text-[10px] text-slate-400 font-normal leading-normal mt-0.5'
+                    : 'text-[10px] text-slate-400 font-normal leading-normal mt-0.5';
+
+                html += `
+                    <div class="${containerClass}">
+                        <h4 class="${headingClass}">📌 ${catName}</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                `;
+
+                categories[catName].forEach((item, itemIndex) => {
+                    const itemId = isDrawer ? `drawer_item_${catIndex}_${itemIndex}` : `rental_item_${catIndex}_${itemIndex}`;
+                    const noteHTML = item.note ? `<p class="${noteClass}">${item.note}</p>` : '';
+                    const targetUrl = resolveChecklistUrl(item);
+                    const hasUrl = Boolean(targetUrl);
+                    const escapedName = String(item.name).replace(/'/g, "\\'");
+                    const escapedUrl = String(targetUrl).replace(/'/g, "\\'");
+                    const btnHTML = hasUrl ? `
+                        <div id="btn_container_${itemId}" class="flex-shrink-0 ml-2">
+                            <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" onclick="trackAndOpen('清單-${escapedName}', '${escapedUrl}')"
+                                class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-[8px] sm:text-[9px] py-1 px-2.5 rounded-lg flex items-center gap-1 transition-colors shadow-sm whitespace-nowrap">
+                                逛賣場 <i class="fa-solid fa-arrow-up-right-from-square text-[7px]"></i>
+                            </a>
+                        </div>
+                    ` : '';
+
+                    html += `
+                        <div class="${itemClass}">
+                            <div class="flex items-start gap-2.5 flex-1 min-w-0">
+                                <input type="checkbox" id="${itemId}" onchange="handleCheckChange('${itemId}')"
+                                    class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 cursor-pointer mt-0.5">
+                                <div class="flex-1 min-w-0">
+                                    <label id="label_${itemId}" for="${itemId}" class="${labelClass}">
+                                        ${item.name}
+                                    </label>
+                                    ${noteHTML}
+                                </div>
+                            </div>
+                            ${btnHTML}
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+
+            return html;
+        }
+
+        function generateRentalChecklist() {
+            const container = document.getElementById('rentalListContainer');
+            const drawerBody = document.getElementById('drawerChecklistBody');
+            if (container) container.innerHTML = buildChecklistHTML('main');
+            if (drawerBody) drawerBody.innerHTML = buildChecklistHTML('drawer');
+        }
+
+        // 處理打勾狀態變更
+        function handleCheckChange(checkboxId) {
+            const checkbox = document.getElementById(checkboxId);
+            const label = document.getElementById(`label_${checkboxId}`);
+            const btnContainer = document.getElementById(`btn_container_${checkboxId}`);
+
+            if (checkbox.checked) {
+                // 已勾選：標記刪除線，如果右邊有賣場按鈕則隱藏它
+                label.classList.add('line-through', 'text-slate-400', 'font-normal');
+                label.classList.remove('text-slate-700', 'font-bold');
+                if (btnContainer) btnContainer.style.display = 'none';
+            } else {
+                // 未勾選：復原，重新顯示按鈕
+                label.classList.remove('line-through', 'text-slate-400', 'font-normal');
+                label.classList.add('text-slate-700', 'font-bold');
+                if (btnContainer) btnContainer.style.display = 'block';
+            }
+        }
 
         // 核心邏輯：免運最優組合計算
-
-
-
         function calculateBestCombo() {
-
-
-
             const threshold = parseFloat(document.getElementById('shippingThreshold').value) || 0;
-
-
-
             const current = parseFloat(document.getElementById('currentCartAmount').value) || 0;
-
-
-
             const resultDiv = document.getElementById('calcResult');
 
-
-
-
-
-
-
             if (current <= 0) {
-
-
-
                 resultDiv.innerHTML = `<p class="text-xs text-red-500 font-bold">請輸入正確的購物車金額唷！</p>`;
-
-
-
                 return;
-
-
-
             }
-
-
-
-
-
-
 
             if (current >= threshold) {
-
-
-
                 resultDiv.innerHTML = `
-
-
-
                     <div class="text-slate-800">
-
-
-
                         <p class="text-sm font-black text-green-600 mb-1">🎉 恭喜！您已達免運門檻！</p>
-
-
-
                         <p class="text-[11px] text-slate-500">目前金額 $${current} 已超過免運門檻 $${threshold}，免運券直接給它開下去！</p>
-
-
-
                     </div>
-
-
-
                 `;
-
-
-
                 return;
-
-
-
             }
 
-
-
-
-
-
-
-            const deficit = threshold - current; // 運費缺口
-
-
-
-
-
-
-
-            // 從全部商品撈出在試算表中標記 isAddOn 為 true 的湊單品
-
-
-
-            // 注意：GAS 傳過來的 true 有可能是布林值 true，也有可能是字串 "TRUE"
-
-
-
+            const deficit = threshold - current; 
             const addOnPool = products.filter(p => p.isAddOn === true || String(p.isAddOn).toUpperCase() === 'TRUE');
 
-
-
-
-
-
-
             if (addOnPool.length === 0) {
-
-
-
                 resultDiv.innerHTML = `
-
-
-
                     <div class="text-left w-full">
-
-
-
                         <p class="text-xs text-slate-700 font-bold mb-1">還差 <span class="text-red-500 font-black text-sm">$${deficit}</span> 元免運！</p>
-
-
-
                         <p class="text-[10px] text-slate-400">目前後台尚未標記湊單品（isAddOn 欄位），快去點擊下方商品區尋找好物湊單吧！</p>
-
-
-
                     </div>
-
-
-
                 `;
-
-
-
                 return;
-
-
-
             }
-
-
-
-
-
-
-
-            // 智慧算法：依照價格與缺口的接近程度排序，找出最適合的商品（優先推薦價格大於等於缺口、且最接近的）
-
-
 
             addOnPool.forEach(p => {
-
-
-
-                // 將價格字串轉為數字（去掉 $ 等特殊符號）
-
-
-
                 const priceNum = parseFloat(String(p.price).replace(/[^0-9.]/g, '')) || 0;
-
-
-
                 p._tempPrice = priceNum;
-
-
-
-                // 權重計算：如果價格剛好可以補滿缺口，分數越高
-
-
-
                 p._score = priceNum >= deficit ? (priceNum - deficit) : (deficit - priceNum + 1000);
-
-
-
             });
-
-
-
-
-
-
 
             addOnPool.sort((a, b) => a._score - b._score);
-
-
-
-            const bestMatch = addOnPool[0]; // 最佳媒合商品
-
-
-
+            const bestMatch = addOnPool[0]; 
             const matchPrice = bestMatch._tempPrice;
 
-
-
-
-
-
-
             resultDiv.innerHTML = `
-
-
-
                 <div class="text-left w-full space-y-2">
-
-
-
                     <p class="text-xs text-slate-700 font-bold">離免運還差 <span class="text-red-500 font-black text-sm">$${deficit}</span> 元！</p>
-
-
-
                     <div class="bg-white border border-slate-200 rounded-xl p-2 flex items-center gap-2 shadow-sm">
-
-
-
                         <img src="${bestMatch.image}" class="w-10 h-10 rounded-lg object-cover flex-shrink-0">
-
-
-
                         <div class="overflow-hidden flex-1">
-
-
-
                             <h4 class="text-[11px] font-bold text-slate-800 truncate">${bestMatch.name}</h4>
-
-
-
                             <p class="text-xs font-black text-orange-500 mt-0.5">${bestMatch.price}</p>
-
-
-
                         </div>
-
-
-
                     </div>
-
-
-
                     <p class="text-[10px] text-slate-400">💡 加上這款商品預估總計 $${current + matchPrice} 元，完美解鎖免運！</p>
-
-
-
                     <a href="${bestMatch.affiliateUrl}" target="_blank" rel="noopener noreferrer" class="w-full bg-orange-500 hover:bg-orange-600 text-white text-center font-bold text-[11px] py-2 px-3 rounded-lg flex items-center justify-center gap-1 transition-colors shadow-sm">
-
-
-
                         立即加購湊免運 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-
-
-
                     </a>
-
-
-
                 </div>
-
-
-
             `;
-
-
-
         }
 
-
-
-
-
-
-
-        // 渲染商家列表（根據當前分類篩選）
-
-
-
+        // 渲染商家列表
         function displayStores(filterCat) {
-
-
-
             const storeRow = document.getElementById('storeRow');
-
-
-
             const storeSection = document.getElementById('storeSection');
-
-
-
             const storeTitle = document.getElementById('storeTitle');
-
-
-
-           
-
-
-
+            
             storeRow.innerHTML = '';
-
-
-
-           
-
-
-
             const filteredStores = filterCat === '全部' ? stores : stores.filter(s => s.category === filterCat);
-
-
-
-           
-
-
-
+            
             if (filteredStores.length === 0) {
-
-
-
                 storeSection.style.display = 'none';
-
-
-
                 return;
-
-
-
             }
-
-
-
-           
-
-
-
+            
             storeSection.style.display = 'block';
-
-
-
             storeTitle.innerHTML = `<i class="fa-solid fa-store mr-1"></i> ${filterCat === '全部' ? '精選推薦商家' : '推薦『' + filterCat + '』優質商家'}`;
-
-
-
-           
-
-
-
+            
             filteredStores.forEach(store => {
-
-
-
                 const logo = store.image || "https://images.unsplash.com/photo-1472851294608-062f824d296e?q=80&w=150";
-
-
-
                 const desc = store.description || "點擊逛逛優質好店";
 
-
-
                 storeRow.innerHTML += `
-
-
-
                     <a href="${store.storeUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 bg-white border border-slate-100 rounded-xl p-3 shadow-sm min-w-[220px] max-w-[240px] flex-shrink-0 hover:shadow-md transition-all">
-
-
-
                         <img src="${logo}" alt="${store.name}" class="w-10 h-10 rounded-full object-cover border border-slate-100">
-
-
-
                         <div class="overflow-hidden">
-
-
-
                             <h4 class="font-bold text-xs text-slate-900 truncate">${store.name}</h4>
-
-
-
                             <p class="text-[10px] text-slate-400 truncate mt-0.5">${desc}</p>
-
-
-
                         </div>
-
-
-
                     </a>
-
-
-
                 `;
-
-
-
             });
-
-
-
         }
 
-
-
-
-
-
+        // 計算日期差天數
+        function getDaysDifference(dateStr) {
+            if (!dateStr) return null;
+            const date = new Date(dateStr);
+            const today = new Date();
+            const diffTime = Math.abs(today - date);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        }
 
         // 渲染商品列表
-
-
-
         function displayProducts(filteredProducts) {
-
             const grid = document.getElementById('productGrid');
-
             grid.innerHTML = '';
-
-           
-
+            
             if(filteredProducts.length === 0) {
-
                 grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 text-xs">該分類目前尚無商品 🚀</div>`;
-
                 return;
-
             }
 
-
-
             filteredProducts.forEach(item => {
-
                 const isSale = item.category === '限時特賣';
-
                 const tagClass = isSale ? 'bg-red-500 text-white' : 'bg-black/70 text-white';
-
-               
-
-                // 從 stats 物件抓取該商品的點擊次數，沒紀錄則顯示 0
-
                 const clickCount = stats[item.name] || 0;
-
-               
-
+                
                 grid.innerHTML += `
-
                     <div class="bg-white rounded-xl border border-slate-100 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
-
                         <div>
-
                             <div class="relative aspect-square overflow-hidden bg-slate-50">
-
                                 <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover">
-
                                 <span class="absolute top-2 left-2 backdrop-blur-sm text-[9px] font-bold px-2 py-0.5 rounded-md ${tagClass}">${item.category}</span>
-
                             </div>
-
                             <div class="p-3">
-
                                 <h3 class="font-bold text-slate-900 text-xs md:text-sm line-clamp-2 mb-2 leading-snug h-8 md:h-10">${item.name}</h3>
-
                                 <div class="flex items-center justify-between text-[11px] text-slate-500 mb-2">
-
                                     <span class="text-amber-500 font-bold flex items-center gap-0.5"><i class="fa-solid fa-star text-[10px]"></i> ${item.rating || '4.9 ★'}</span>
-
                                     <span class="text-slate-400 font-medium"><i class="fa-solid fa-fire text-orange-400 mr-0.5"></i> ${clickCount} 人點擊</span>
-
                                 </div>
-
                                 <div class="text-sm font-black text-black">${item.price}</div>
-
                             </div>
-
                         </div>
-
                         <div class="p-3 pt-0">
-
                             <button onclick="trackAndOpen('${item.name.replace(/'/g, "\\'")}', '${item.affiliateUrl}')"
-
                                 class="w-full bg-black hover:bg-slate-800 text-white text-center font-bold text-[11px] py-2 px-3 rounded-lg flex items-center justify-center gap-1 transition-colors">
-
                                 查看賣場細節 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-
                             </button>
-
                         </div>
-
                     </div>
-
                 `;
-
             });
-
         }
 
-
-
-
-
-
-
         // 分類點擊連動
-
-
-
         function filterCategory(category) {
-
-
-
             currentCategory = category;
-
-
-
             const buttons = document.querySelectorAll('.cat-btn');
-
-
-
             buttons.forEach(btn => {
-
-
-
                 if(btn.innerText.includes(category)) {
-
-
-
                     btn.className = category === '限時特賣' ? "cat-btn bg-red-500 text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors shadow-sm" : "cat-btn bg-black text-white px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors border border-black shadow-sm";
-
-
-
                 } else {
-
-
-
                     btn.className = btn.innerText.includes('限時特賣') ? "cat-btn bg-white hover:bg-slate-50 text-red-500 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap border border-red-200 transition-colors shadow-sm" : "cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm";
-
-
-
                 }
-
-
-
             });
-
-
-
-           
-
-
-
+            
             let filtered = (category === '全部') ? [...products] : products.filter(p => p.category === category);
-
-            // 如果是「全部」，就按點擊次數從大到小排序
             if (category === '全部') {
                 filtered.sort((a, b) => (stats[b.name] || 0) - (stats[a.name] || 0));
             }
 
             displayStores(category);
             displayProducts(filtered);
-
-
-
         }
-
-
-
-
-
-
 
         function searchProducts() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             let filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
-
-            // 搜尋結果也按熱門度排序
             filtered.sort((a, b) => (stats[b.name] || 0) - (stats[a.name] || 0));
-
             displayProducts(filtered);
         }
 
-
-
-        // 在 script 區塊中加入
-
-            function trackAndOpen(name, url) {
-
-                fetch(GOOGLE_SCRIPT_URL, {
-
-                    method: 'POST',
-
-                    body: JSON.stringify({ type: 'productClick', productName: name })
-
-                });
-
-                window.open(url, '_blank');
-
-            }
-
-            let stats = {};
-
-
-
-        async function loadData() {
-
-            // 1. 觸發瀏覽統計
-
+        function trackAndOpen(name, url) {
             fetch(GOOGLE_SCRIPT_URL, {
-
                 method: 'POST',
-
-                body: JSON.stringify({ type: 'pageView' })
-
-            }).catch(e => console.log("PageView track error", e));
-
-
-
-            try {
-
-                const response = await fetch(GOOGLE_SCRIPT_URL);
-
-                const resJson = await response.json();
-
-                products = resJson.products || [];
-
-                stores = resJson.stores || [];
-
-                stats = resJson.stats || {}; // 關鍵：將後端統計資料存入變數
-
-               
-
-                // 將這兩行
-                // displayStores('全部');
-                // displayProducts(products);
-
-                // 改為呼叫 filterCategory，這樣它會自動執行排序
-                filterCategory('全部');
-
-            } catch (error) {
-
-                console.error("資料讀取失敗:", error);
-
-            }
-
-
-
+                body: JSON.stringify({ type: 'productClick', productName: name })
+            }).catch(e => console.log("Track error", e));
+            window.open(url, '_blank');
         }
 
+        async function loadData() {
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify({ type: 'pageView' })
+            }).catch(e => console.log("PageView track error", e));
 
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const resJson = await response.json();
+                products = resJson.products || [];
+                stores = resJson.stores || [];
+                stats = resJson.stats || {};
+                rawChecklistData = resJson.checklist || defaultChecklistData;
+                
+                filterCategory('全部');
+                
+                // 產生租屋必備勾選清單
+                generateRentalChecklist();
 
-
-
-
+            } catch (error) {
+                console.error("資料讀取失敗:", error);
+                // 即使後台 API 失敗，使用預設清單
+                rawChecklistData = defaultChecklistData;
+                generateRentalChecklist();
+            }
+        }
 
         document.getElementById('searchInput').addEventListener('keypress', e => { if (e.key === 'Enter') searchProducts(); });
-
-
-
         loadData();
-
-
-
     </script>
-
-
-
 </body>
-
-
-
-</html> 
-
+</html>
