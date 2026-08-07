@@ -40,8 +40,8 @@
             <a href="https://www.threads.net/@h.school_c" target="_blank" rel="noopener noreferrer" class="bg-black hover:bg-slate-800 text-white text-center py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
                 <i class="fa-brands fa-threads text-sm"></i> 追蹤我的 Threads 獲得共鳴
             </a>
-            <a href="https://line.me" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-center py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
-                <i class="fa-solid fa-comments text-green-500 text-sm"></i> 此按鈕按不了 右上方≡是租屋清單 
+            <a href="https://line.me/ti/g2/WswhsYeCkLvQyD9zT7mAXhKpMzNSNsoHHogEoA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 text-center py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
+                <i class="fa-solid fa-comments text-green-500 text-sm"></i> line討論聊天小天地 
             </a>
         </div>
     </section>
@@ -102,12 +102,13 @@
 
     <nav class="max-w-4xl mx-auto px-4 py-3 overflow-x-auto flex gap-2 no-scrollbar">
         <button onclick="filterCategory('全部')" class="cat-btn bg-black text-white px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors border border-black shadow-sm">全部好物</button>
-        <button onclick="filterCategory('限時特賣')" class="cat-btn bg-white hover:bg-slate-50 text-red-500 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap border border-red-200 transition-colors shadow-sm">🔥 限時特賣</button>
-        <button onclick="filterCategory('女生穿搭')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">女生穿搭</button>
-        <button onclick="filterCategory('男生穿搭')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">男生穿搭</button>
+        <button onclick="filterCategory('酷澎泡麵零食飲料')" class="cat-btn bg-white hover:bg-slate-50 text-red-500 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap border border-red-200 transition-colors shadow-sm">🔥酷澎泡麵零食飲料</button>
+        <button onclick="filterCategory('穿搭')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">穿搭</button>
+        <button onclick="filterCategory('美妝')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">美妝</button>
         <button onclick="filterCategory('上課必備')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">上課必備</button>
         <button onclick="filterCategory('宿舍神物')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">宿舍神物</button>
         <button onclick="filterCategory('高CP值3C')" class="cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm">高CP值3C</button>
+        
     </nav>
 
     <section id="storeSection" class="max-w-4xl mx-auto px-4 pt-2 pb-4">
@@ -648,7 +649,7 @@
             }
 
             filteredProducts.forEach(item => {
-                const isSale = item.category === '限時特賣';
+                const isSale = item.category === '酷澎泡麵零食飲料';
                 const tagClass = isSale ? 'bg-red-500 text-white' : 'bg-black/70 text-white';
                 const clickCount = stats[item.name] || 0;
                 
@@ -685,9 +686,9 @@
             const buttons = document.querySelectorAll('.cat-btn');
             buttons.forEach(btn => {
                 if(btn.innerText.includes(category)) {
-                    btn.className = category === '限時特賣' ? "cat-btn bg-red-500 text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors shadow-sm" : "cat-btn bg-black text-white px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors border border-black shadow-sm";
+                    btn.className = category === '酷澎泡麵零食飲料' ? "cat-btn bg-red-500 text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors shadow-sm" : "cat-btn bg-black text-white px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors border border-black shadow-sm";
                 } else {
-                    btn.className = btn.innerText.includes('限時特賣') ? "cat-btn bg-white hover:bg-slate-50 text-red-500 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap border border-red-200 transition-colors shadow-sm" : "cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm";
+                    btn.className = btn.innerText.includes('酷澎泡麵零食飲料') ? "cat-btn bg-white hover:bg-slate-50 text-red-500 px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap border border-red-200 transition-colors shadow-sm" : "cat-btn bg-white hover:bg-slate-50 text-slate-600 px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap border border-slate-200 transition-colors shadow-sm";
                 }
             });
             
