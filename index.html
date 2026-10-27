@@ -671,10 +671,12 @@
                             </div>
                         </div>
                         <div class="p-3 pt-0">
-                            <button onclick="trackAndOpen('${item.name.replace(/'/g, "\\'")}', '${item.affiliateUrl}')"
+                            <a href="${item.affiliateUrl}" target="_blank" rel="noopener noreferrer"
+                                onclick="trackProductClick('${item.name.replace(/'/g, "\\'")}')"
+                                title="${item.affiliateUrl}"
                                 class="w-full bg-black hover:bg-slate-800 text-white text-center font-bold text-[11px] py-2 px-3 rounded-lg flex items-center justify-center gap-1 transition-colors">
                                 查看賣場細節 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 `;
@@ -710,11 +712,15 @@
         }
 
         function trackAndOpen(name, url) {
+            trackProductClick(name);
+            window.open(url, '_blank');
+        }
+
+        function trackProductClick(name) {
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 body: JSON.stringify({ type: 'productClick', productName: name })
             }).catch(e => console.log("Track error", e));
-            window.open(url, '_blank');
         }
 
         async function loadData() {
